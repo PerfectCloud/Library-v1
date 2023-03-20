@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="menuClicked.emit()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Ma Librarie</h1>
+
+    <div class="user-info">
+        <span>
+            Hi,
+            {{this.api.getTokenUserInfo()?.firstName | titlecase}}
+        </span>
+        <button mat-icon-button [matMenuTriggerFor]="userMenu">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+    </div>
+
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item routerLink="/login">
+            <mat-icon>Authentification</mat-icon>
+            <span>Authentification</span>
+        </button>
+        <button mat-menu-item routerLink="/users/profile">
+            <mat-icon>account_box</mat-icon>
+            <span>Mon Profil</span>
+        </button>
+        <button mat-menu-item (click)="logOut()">
+            <mat-icon>Deconnection</mat-icon>
+            <span>Deconnection</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>
